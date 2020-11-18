@@ -1,0 +1,136 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image:linear-gradient(rgb(198, 174, 39),rgba(41, 39, 30, 0.5)),url(images/bg-job.png);
+    background-position: center;
+    background-size: cover;
+    font-family: 'varela+round', cursive;}
+
+.header{
+    height: 550;
+    display: flex;
+    justify-content: center;
+    align-items: center;}
+h1{
+    color: white;
+    text-align:center;
+    margin-bottom: 50px;
+    font-size: 70px;
+    letter-spacing: 2px;
+    font-family: 'Gloria Hallelujah', cursive;
+    position: absolute;
+    top: 10%;
+    right:40%;
+    background-color: #3cbbb1;
+    border-radius: 30px;  }
+
+h2{
+    color: white;
+    text-align:center;
+    margin-bottom: 50px;
+    font-size: 55px;
+    letter-spacing: 2px;
+    font-family: 'Gloria Hallelujah', cursive;
+    background-color: #3cbbb1;
+    border-radius: 25px;
+    outline: none;
+    position: absolute;
+    top: 25%;
+    right:26%;}
+
+.search-field{
+    height: 50px;
+    padding:20px ;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+    margin: 10px;}
+
+.job{
+    width: 400px;}
+
+
+.location{
+    width:250px;}
+
+.search-btn{
+
+    height: 50px;
+    width: 150px;
+    background: #3cbbb1;
+    border: none;
+    font-size: 20px;
+    color: whitesmoke;
+    border-radius: 25px;}
+
+
+.search-btn:hover{
+    background: gray;
+    cursor: pointer;}
+
+.form-box{
+    background: black (0,0,0,0.5);
+    padding: 30px;
+    border: none;
+    position: absolute;
+    top: 35%;
+    left:20%;
+    text-align: center;}
+
+.logo{
+    margin: 0;
+    top:8%;
+    right: -7%;
+    width: 15%;
+    height: 15%;
+    position: absolute;
+    transform: translate(-50%, -50%);}
+
+
+
+.btn{
+border: none;
+background: #3cbbb1;
+margin-top: 15px;
+border-right: 2px;
+color: white;
+font-size:17px;
+border-right-style: groove; 
+
+
+
+}
+
+
+.btnn:hover{
+    background: grey;}
+
+.footer {
+    position: absolute;
+    background-color:#3cbbb1;
+    color:white ;
+    text-align: center;
+    bottom: 0px;
+    height: 40px;
+    width: 100%;
+    opacity:70%;}
+
+
+.text-muted{
+    color: white !important;
+}
+
+.footerdiv{
+margin-top:0.7%;
+
+}
+
+.menu{
+    display:flex;
+
+}
+
+
+
+
+  
