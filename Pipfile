@@ -8,6 +8,7 @@ flake8 = "*"
 
 [packages]
 django = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.8"
