@@ -1,8 +1,115 @@
-<DOCTYPE html>
+{% load static %}
 <html>
-	<head>
-	<head>
-	
-	<body>
-	</body>
+<head>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+   integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+   integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" 
+   crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" 
+  integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+   crossorigin="anonymous"></script>  
+
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+
+
+
+<title>joBoard</title> 
+</head>
+
+<body>
+
+      <div class="menu">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" 
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          menu
+          </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Upload CV</a>
+          <a class="dropdown-item" href="#">Submissions tracking</a>
+          <a class="dropdown-item" href="#">Salary tables</a>
+      </div>
+      
+          <button href="#" class="btn btn-sm btn-outline-secondary" type="button">
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-open" fill="currentColor" 
+          xmlns="http://www.w3.org/2000/svg">
+
+
+          <path fill-rule="evenodd" 
+          d="M1 15.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM11.5 
+          2H11V1h.5A1.5 1.5 0 0 1 13 2.5V15h-1V2.5a.5.5 0 0 0-.5-.5z"/>
+
+
+          <path fill-rule="evenodd" 
+          d="M10.828.122A.5.5 0 0 1 11 .5V15h-1V1.077l-6 
+          .857V15H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117z"/>
+
+          <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z"/>
+          </svg> sign in </button>
+
+          <button href="#" class="btn btn-sm btn-outline-secondary" 
+          type="button"><svg width="1em" height="1em" viewBox="0 0 16 16" 
+          class="bi bi-person-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0
+           0 6zm7.5-3a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 
+           0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+          </svg>sign up</button>
+        
+      </div>
+
+
+
+
+      <div class="header">
+         <form>
+         <img class="logo" src="{% static 'images/sitelogovector.svg' %}">
+         <h1><strong>   JoBoard </strong></h1>
+         <h2><strong>One stop to your next job!</strong></h2>
+     <div class= "form-box">
+          <input type="text" class="search-field job"
+          placeholder = "what is your profession?">
+
+          <input type="text" class="search-field location"
+          placeholder = " where?">
+
+          <button class="search-btn" type="button"><i class="fas fa-search"></i>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search"
+           fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+           <path fill-rule="evenodd" 
+           d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+           <path fill-rule="evenodd"
+            d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+           </svg>find it! </button>
+            
+       </div>
+          </form>
+       </div>
+</body>
+
+<footer class="footer">
+      <div class="footerdiv">
+         <a class="text-muted">All right reserved to joBoard - job's search engine </a>
+      </div>
+</footer>
+
+
 </html>
