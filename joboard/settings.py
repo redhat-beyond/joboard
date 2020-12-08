@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'joboard_home.apps.JoboardHomeConfig',
-    'login'
+    'login',
+    'user_notification',
 ]
 
 MIDDLEWARE = [
