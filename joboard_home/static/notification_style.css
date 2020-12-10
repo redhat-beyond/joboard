@@ -1,0 +1,8 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image:linear-gradient(rgb(198, 174, 39),rgba(41, 39, 30, 0.5)),url(images/bg-job.png);
+    background-position: center;
+    background-size: cover;
+    font-family: 'varela+round', cursive;}
+
