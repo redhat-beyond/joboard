@@ -5,7 +5,7 @@ from django.db import models
 
 class JobAlert(models.Model):
     UserAccount_id = models.ForeignKey(
-        "login.UserAccount", on_delete=models.CASCADE, blank=True, null=True)
+        "accounts.UserAccount", on_delete=models.CASCADE, blank=True, null=True)
     alert_message = models.TextField()
     alert_frequency = models.CharField(max_length=20)
     job_alert_type = models.CharField(max_length=50)

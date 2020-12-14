@@ -38,7 +38,7 @@ INSTALLED_APPS = [
   'django.contrib.messages',
   'django.contrib.staticfiles',
   'joboard_home.apps.JoboardHomeConfig',
-  'login',
+  'accounts.apps.AccountsConfig',
   'user_notification',
   'searchJob',
 ]
