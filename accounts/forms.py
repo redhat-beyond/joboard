@@ -5,7 +5,7 @@ from .models import UserAccount
 
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(max_length=200)
+    email = forms.EmailField(max_length=200, required=True)
 
     class Meta:
         model = User
