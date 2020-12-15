@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('user_notification', '0001_initial'),
-        ('login', '0002_auto_20201205_1543'),
+        ('accounts', '0002_auto_20201205_1543'),
     ]
 
     operations = [
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ('company_type', models.CharField(blank=True, choices=[('FINTECH', 'FINTECH'), ('BIOTECH', 'BIOTECH'),
                  ('MEDTECH', 'MEDTECH'), ('FOODTECH', 'FOODTECH'), ('AUTOMATIVE', 'AUTOMATIVE'), ('SW', 'SW'),
                  ('HW', 'HW'), ('UNSPECIFIED', 'UNSPECIFIED')], default='UNSPECIFIED', max_length=50, null=True)),
-                ('compamy_url', models.URLField()),
+                ('company_url', models.URLField()),
             ],
         ),
         migrations.CreateModel(
@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
                  ('INTER', 'INTER'), ('STUDENT', 'STUDENT'), ('UNSPECIFIED', 'UNSPECIFIED')], default='UNSPECIFIED',
                  max_length=50, null=True)),
                 ('job_URL', models.URLField()),
-                ('JobType_id', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                ('job_type_id', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
                  to='user_notification.jobtype')),
                 ('company_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='searchJob.company')),
                 ('job_city_id', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
@@ -53,9 +53,9 @@ class Migration(migrations.Migration):
                 ('application_status', models.CharField(blank=True, choices=[('APPLIED', 'APPLIED'),
                  ('NOT_APPLIED', 'NOT_APPLIED'), ('UNSPECIFIED', 'UNSPECIFIED')], default='UNSPECIFIED', max_length=50,
                  null=True)),
-                ('UserAccount_id', models.ForeignKey(blank=True, null=True,
-                 on_delete=django.db.models.deletion.CASCADE, to='login.useraccount')),
-                ('jobPost_id', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
+                ('user_account_id', models.ForeignKey(blank=True, null=True,
+                 on_delete=django.db.models.deletion.CASCADE, to='accounts.UserAccount')),
+                ('job_post_id', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
                  to='searchJob.jobpost')),
             ],
         ),

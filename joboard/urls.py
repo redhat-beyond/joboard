@@ -21,5 +21,5 @@ from joboard_home import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^notification/', include('user_notification.urls')),
-    path('', views.home_page, name='home_page')
+    path('', views.home_page, name='home_page'),
 ]
