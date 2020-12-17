@@ -17,14 +17,14 @@ class Migration(migrations.Migration):
             name='JobCity',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('Job_city_name', models.CharField(max_length=20)),
+                ('job_city_name', models.CharField(max_length=20)),
             ],
         ),
         migrations.CreateModel(
             name='JobType',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('Job_type_name', models.CharField(max_length=20)),
+                ('job_type_name', models.CharField(max_length=20)),
             ],
         ),
         migrations.CreateModel(
@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('job_alert_scope', models.CharField(max_length=50)),
                 ('job_alert_city', models.CharField(max_length=50)),
                 ('job_alert_company_name', models.CharField(max_length=20)),
-                ('UserAccount_id', models.ForeignKey(blank=True, null=True,
+                ('user_account_id', models.ForeignKey(blank=True, null=True,
                  on_delete=django.db.models.deletion.CASCADE, to='login.useraccount')),
             ],
         ),

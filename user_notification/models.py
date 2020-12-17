@@ -4,7 +4,7 @@ from django.db import models
 
 
 class JobAlert(models.Model):
-    UserAccount_id = models.ForeignKey(
+    user_account_id = models.ForeignKey(
         "login.UserAccount", on_delete=models.CASCADE, blank=True, null=True)
     alert_message = models.TextField()
     alert_frequency = models.CharField(max_length=20)
@@ -18,8 +18,8 @@ class JobAlert(models.Model):
 
 
 class JobType(models.Model):
-    Job_type_name = models.CharField(max_length=20)
+    job_type_name = models.CharField(max_length=20)
 
 
 class JobCity(models.Model):
-    Job_city_name = models.CharField(max_length=20)
+    job_city_name = models.CharField(max_length=20)
