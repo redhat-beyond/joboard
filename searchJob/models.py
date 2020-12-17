@@ -55,7 +55,7 @@ class JobPost(models.Model):
 
 
 class UserApplication(models.Model):
-    user_account_id = models.ForeignKey("login.UserAccount", on_delete=models.CASCADE, blank=True, null=True)
+    user_account_id = models.ForeignKey("accounts.UserAccount", on_delete=models.CASCADE, blank=True, null=True)
     job_post_id = models.ForeignKey(JobPost, on_delete=models.CASCADE, blank=True, null=True)
     application_status = models.CharField(max_length=50, choices=ApplicationStatus.choices,
                                           default=ApplicationStatus.UNSPECIFIED, blank=True, null=True)

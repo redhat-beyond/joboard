@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('login', '0002_auto_20201205_1543'),
+        ('accounts', '0002_auto_20201205_1543'),
     ]
 
     operations = [
@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                 ('job_alert_city', models.CharField(max_length=50)),
                 ('job_alert_company_name', models.CharField(max_length=20)),
                 ('user_account_id', models.ForeignKey(blank=True, null=True,
-                 on_delete=django.db.models.deletion.CASCADE, to='login.useraccount')),
+                 on_delete=django.db.models.deletion.CASCADE, to='accounts.useraccount')),
             ],
         ),
     ]
