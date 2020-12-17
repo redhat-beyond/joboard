@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class CompanyType(models.TextChoices):
@@ -31,7 +32,9 @@ class Company(models.Model):
     profile_description = models.TextField()
     establishment_date = models.DateField()
     contact_number = models.CharField(max_length=12, blank=True, null=True)
-    company_type = models.CharField(max_length=50, choices=CompanyType.choices, default=CompanyType.UNSPECIFIED,
+    company_type = models.CharField(max_length=50,
+                                    choices=CompanyType.choices,
+                                    default=CompanyType.UNSPECIFIED,
                                     blank=True, null=True)
     company_url = models.URLField(max_length=200)
 
@@ -55,7 +58,8 @@ class JobPost(models.Model):
 
 
 class UserApplication(models.Model):
-    user_account_id = models.ForeignKey("accounts.UserAccount", on_delete=models.CASCADE, blank=True, null=True)
+    user_account_id = models.ForeignKey(settings.AUTH_USER_MODEL, default=1,
+                                        on_delete=models.CASCADE, blank=True, null=True)
     job_post_id = models.ForeignKey(JobPost, on_delete=models.CASCADE, blank=True, null=True)
     application_status = models.CharField(max_length=50, choices=ApplicationStatus.choices,
                                           default=ApplicationStatus.UNSPECIFIED, blank=True, null=True)

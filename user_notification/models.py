@@ -1,11 +1,13 @@
 from django.db import models
-
-# Create your models here.
+from django.conf import settings
 
 
 class JobAlert(models.Model):
-    user_account_id = models.ForeignKey(
-        "accounts.UserAccount", on_delete=models.CASCADE, blank=True, null=True)
+    user_account_id = models.ForeignKey(settings.AUTH_USER_MODEL,
+                                        default=1,
+                                        on_delete=models.CASCADE,
+                                        blank=True,
+                                        null=True)
     alert_message = models.TextField()
     alert_frequency = models.CharField(max_length=20)
     job_alert_type = models.CharField(max_length=50)
