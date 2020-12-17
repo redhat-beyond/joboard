@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('user_notification', '0001_initial'),
-        ('login', '0002_auto_20201205_1543'),
+        ('accounts', '0002_auto_20201205_1543'),
     ]
 
     operations = [
@@ -54,7 +54,7 @@ class Migration(migrations.Migration):
                  ('NOT_APPLIED', 'NOT_APPLIED'), ('UNSPECIFIED', 'UNSPECIFIED')], default='UNSPECIFIED', max_length=50,
                  null=True)),
                 ('UserAccount_id', models.ForeignKey(blank=True, null=True,
-                 on_delete=django.db.models.deletion.CASCADE, to='login.useraccount')),
+                 on_delete=django.db.models.deletion.CASCADE, to='accounts.useraccount')),
                 ('jobPost_id', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE,
                  to='searchJob.jobpost')),
             ],
