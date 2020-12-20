@@ -1,0 +1,9 @@
+
+<h1>Log in</h1>
+
+<form class="site-form" action="{% url 'login' %}" method="post>
+	{% csrf_token %}
+	{{form.as_p}}
+	<input type="hidden" name="next" value="{{ next }}" />	
+	<input type="submit" value="Send">
+</form>
