@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.db import models
 from django.conf import settings
 
@@ -55,6 +56,24 @@ class JobPost(models.Model):
 
     def __str__(self):
         return self.job_name
+
+    # filter DB objects (job posts) based on optional search fields
+    @classmethod
+    def GetSearchResults(cls, JobType=None, JobCity=None, JobScope=None, Company=None):
+        query = Q()
+        if JobType:
+            query &= Q(job_type_id__job_type_name=JobType)
+        if JobCity:
+            query &= Q(job_city_id__job_city_name=JobCity)
+        if JobScope:
+            query &= Q(job_scope=JobScope)
+        if Company:
+            query &= Q(company_id__company_name=Company)
+
+        filter_query = cls.objects.filter(query).order_by('creation_date')
+        if len(filter_query) < 1:
+            return "no relevant jobs for you"
+        return filter_query
 
 
 class UserApplication(models.Model):
