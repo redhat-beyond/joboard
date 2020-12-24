@@ -130,6 +130,13 @@ margin-top:0.7%;
 
 }
 
+.showSearch{
+    height: 550;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
 
 
 
