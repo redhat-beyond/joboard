@@ -85,3 +85,16 @@ class UserApplication(models.Model):
 
     def __str__(self):
         return str(self.job_post_id)
+
+# filter DB objects (User application) based on user
+    @classmethod
+    def GetUserApplications(cls, UserName=None, ApplicationStatus=None):
+        query = Q()
+        if UserName:
+            query &= Q(user_account_id__username=UserName)
+        if ApplicationStatus:
+            query &= Q(application_status=ApplicationStatus)
+        filter_query = cls.objects.filter(query)
+        if len(filter_query) < 1:
+            return "No results found"
+        return filter_query
