@@ -1,24 +1,19 @@
 from django.shortcuts import render, redirect
-from .forms import SignUpForm, AccountForm
+from .forms import SignUpForm
 from django.contrib.auth import login
 from django.contrib import messages
 
 
-def signup_view(request):
+def sign_up_view(request):
     if request.method == 'POST':
-        user_form = SignUpForm(request.POST)
-        account_form = AccountForm(request.POST)
-        if user_form.is_valid() and account_form.is_valid():
-            user = user_form.save()
+        registration_form = SignUpForm(request.POST)
+        if registration_form.is_valid():
+            user = registration_form.save()
             user.save()
-            user_account = account_form.save(commit=False)
-            user_account.user = user
-            user_account.save()
             login(request, user)
             messages.success(request, 'Welcome to JoBoard! ')
-            return redirect('home_page')
+            return redirect('/')
     else:
-        user_form = SignUpForm()
-        account_form = AccountForm()
+        registration_form = SignUpForm()
 
-    return render(request, 'signup/signup.html', {'user_form': user_form, 'account_form': account_form})
+    return render(request, 'sign_up.html', {'registration_form': registration_form})
