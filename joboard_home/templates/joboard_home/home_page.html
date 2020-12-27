@@ -30,6 +30,7 @@
    crossorigin="anonymous"></script>  
 
   <link rel="stylesheet" href="{% static 'style.css' %}">
+  <link rel = "icon" href ="{% static 'images/sitelogovector.svg' %}" type = "image/x-icon" > 
 
 
 
@@ -76,22 +77,30 @@
         
       </div>
 
-
-
-
+      <img class="logo" src="{% static 'images/sitelogovector.svg' %}">
+      
       <div class="header">
          <form action="/jobs">
-                <img class="logo" src="{% static 'images/sitelogovector.svg' %}">
                 <h1><strong>   JoBoard </strong></h1>
                 <h2><strong>One stop to your next job!</strong></h2>
             <div class= "form-box">
                 <input type="text" class="search-field job"
-                placeholder = "what is your profession?">
+                placeholder = "what is your profession?" title="what is your profession?">
 
                 <input type="text" class="search-field location"
-                placeholder = " where?">
+                placeholder = " where?" title="where?">
 
-                
+                <select class="search-field scope" title="choose the job scope">
+                <option value disabled selected>choose the job scope</option>
+                <option value="1">FULL</option>
+                <option value="2">PART</option>
+                <option value="3">INTER</option>
+                <option value="4">STUDENT</option>
+                </select>
+
+                <input type="text" class="search-field company"
+                 placeholder = "prefer a specific company?" title="prefer a specific company?">
+
                 <button class="search-btn" type="submit"><i class="fas fa-search"></i>
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search"
                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
