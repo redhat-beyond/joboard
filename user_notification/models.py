@@ -1,5 +1,8 @@
 from django.db import models
+from datetime import datetime, timedelta
 from django.conf import settings
+from searchJob.models import JobScope
+from django.core.validators import MinValueValidator
 
 
 class JobAlert(models.Model):
@@ -8,15 +11,34 @@ class JobAlert(models.Model):
                                         on_delete=models.CASCADE,
                                         blank=True,
                                         null=True)
-    alert_message = models.TextField()
-    alert_frequency = models.CharField(max_length=20)
+    last_check_date = models.DateField(default=datetime.today)
+    frequency_in_days = models.PositiveIntegerField(default=1,
+                                                    validators=[MinValueValidator(1)])
     job_alert_type = models.CharField(max_length=50)
-    job_alert_scope = models.CharField(max_length=50)
-    job_alert_city = models.CharField(max_length=50)
-    job_alert_company_name = models.CharField(max_length=20)
+    job_alert_scope = models.CharField(max_length=50, choices=JobScope.choices, default=JobScope.UNSPECIFIED,
+                                       blank=True, null=True)
+    job_alert_city = models.CharField(max_length=50, blank=True, null=True)
+    job_alert_company_name = models.CharField(
+        max_length=20, blank=True, null=True)
 
     def __str__(self):
         return str(self.user_account_id)
+
+    # Calculate the date of the next alert
+    @classmethod
+    def calc_check_date(cls, last_check_date, frequency_in_days):
+        if frequency_in_days < 1:
+            myError = ValueError(
+                'frequency_in_days should be Greater than or equal to 1')
+            raise myError
+        else:
+            if isinstance(last_check_date, datetime):
+                res = last_check_date + timedelta(days=frequency_in_days)
+            else:
+                last_date = datetime.strptime(
+                    last_check_date, "%Y-%m-%d").date()
+                res = last_date + timedelta(days=frequency_in_days)
+            return res
 
 
 class JobType(models.Model):
