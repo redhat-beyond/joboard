@@ -30,7 +30,6 @@
    crossorigin="anonymous"></script>  
 
   <link rel="stylesheet" href="{% static 'style.css' %}">
-  <link rel = "icon" href ="{% static 'images/sitelogovector.svg' %}" type = "image/x-icon" > 
 
 
 
@@ -50,7 +49,7 @@
           <a class="dropdown-item" href="#">Salary tables</a>
       </div>
       
-          <button href="#" class="btn btn-sm btn-outline-secondary" type="button">
+          <button onclick="location.href='{% url 'login' %}'" class="btn btn-sm btn-outline-secondary" type="button">
           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-door-open" fill="currentColor" 
           xmlns="http://www.w3.org/2000/svg">
 
@@ -67,7 +66,7 @@
           <path d="M8 9c0 .552.224 1 .5 1s.5-.448.5-1-.224-1-.5-1-.5.448-.5 1z"/>
           </svg> sign in </button>
 
-          <button href="#" class="btn btn-sm btn-outline-secondary" 
+          <button onclick="location.href='{% url 'accounts:sign_up' %}'" class="btn btn-sm btn-outline-secondary" 
           type="button"><svg width="1em" height="1em" viewBox="0 0 16 16" 
           class="bi bi-person-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0
@@ -77,40 +76,31 @@
         
       </div>
 
-      <img class="logo" src="{% static 'images/sitelogovector.svg' %}">
-      
+
+
+
       <div class="header">
-         <form action="/jobs">
-                <h1><strong>   JoBoard </strong></h1>
-                <h2><strong>One stop to your next job!</strong></h2>
-            <div class= "form-box">
-                <input type="text" class="search-field job"
-                placeholder = "what is your profession?" title="what is your profession?">
+         <form>
+         <img class="logo" src="{% static 'images/sitelogovector.svg' %}">
+         <h1><strong>   JoBoard </strong></h1>
+         <h2><strong>One stop to your next job!</strong></h2>
+     <div class= "form-box">
+          <input type="text" class="search-field job"
+          placeholder = "what is your profession?">
 
-                <input type="text" class="search-field location"
-                placeholder = " where?" title="where?">
+          <input type="text" class="search-field location"
+          placeholder = " where?">
 
-                <select class="search-field scope" title="choose the job scope">
-                <option value disabled selected>choose the job scope</option>
-                <option value="1">FULL</option>
-                <option value="2">PART</option>
-                <option value="3">INTER</option>
-                <option value="4">STUDENT</option>
-                </select>
-
-                <input type="text" class="search-field company"
-                 placeholder = "prefer a specific company?" title="prefer a specific company?">
-
-                <button class="search-btn" type="submit"><i class="fas fa-search"></i>
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search"
-                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" 
-                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-                <path fill-rule="evenodd"
-                    d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-                </svg>find it! </button>
-                    
-            </div>
+          <button class="search-btn" type="button"><i class="fas fa-search"></i>
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search"
+           fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+           <path fill-rule="evenodd" 
+           d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+           <path fill-rule="evenodd"
+            d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+           </svg>find it! </button>
+            
+       </div>
           </form>
        </div>
 </body>
