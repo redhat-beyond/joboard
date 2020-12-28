@@ -16,3 +16,8 @@ def sign_up_view(request):
         registration_form = SignUpForm()
 
     return render(request, 'signup.html', {'registration_form': registration_form})
+
+
+@login_required
+def account_view(request):
+    return render(request, 'account.html')

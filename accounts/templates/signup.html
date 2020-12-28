@@ -10,17 +10,33 @@
 
 
 <body>
+	{% if user.is_authenticated %}
+		<p>You are logged in as {{ user.get_username }}.</p>
 
-	<h1>Create an account</h1>
+		<p>
+		<a href="{% url 'accounts:account' %}"> My Account </a>
+		</p>
+		
+		<p>
+		<a href="{% url 'home_page' %}"> Back to JoBoard </a>
+		</p>
+		
+		<p>
+		<a href="{% url 'logout' %}"> Log Out </a>
+		</p>
 
-	<div style="position:relative; left:275px; top:250px;">
-		<form method="post">
-			{% csrf_token %}
-			{{registration_form.as_p}}
-		<input type="submit" value="Submit"/>
-		</form>
-	</div>
+	{% else %}
+		<h1>Create an account</h1>
 
+		<div style="position:relative; left:275px; top:250px;">
+			<form method="post">
+				{% csrf_token %}
+				{{registration_form.as_p}}
+			<input type="submit" value="Submit"/>
+			</form>
+		</div>
+
+	{% endif %}
 </body>
 
 
