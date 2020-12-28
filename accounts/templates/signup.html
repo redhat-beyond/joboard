@@ -1,0 +1,27 @@
+{% load static %}
+
+<html>
+
+<head>
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+
+<body>
+
+	<h1>Create an account</h1>
+
+	<div style="position:relative; left:275px; top:250px;">
+		<form method="post">
+			{% csrf_token %}
+			{{registration_form.as_p}}
+		<input type="submit" value="Submit"/>
+		</form>
+	</div>
+
+</body>
+
+
+</html>

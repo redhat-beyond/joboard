@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import SignUpForm
 from django.contrib.auth import login
-from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def sign_up_view(request):
@@ -11,9 +11,8 @@ def sign_up_view(request):
             user = registration_form.save()
             user.save()
             login(request, user)
-            messages.success(request, 'Welcome to JoBoard! ')
-            return redirect('/')
+            return redirect('accounts:account')
     else:
         registration_form = SignUpForm()
 
-    return render(request, 'sign_up.html', {'registration_form': registration_form})
+    return render(request, 'signup.html', {'registration_form': registration_form})
