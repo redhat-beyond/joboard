@@ -1,0 +1,42 @@
+{% load static %}
+
+<html>
+
+<head>
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+
+<body>
+	{% if user.is_authenticated %}
+		<h1>Welcome, {{ user.get_username }}</h1>
+		
+		<p>
+		<a href="{% url 'home_page' %}"> Back to JoBoard </a>
+		</p>
+		
+		<p>
+		<a href="{% url 'logout' %}"> Log Out </a>
+		
+	{% else %}
+		
+		<p>New to JoBoard?</p>
+		
+		<p>
+		<a href="{% url 'signup'}">Sign up</a> 
+		</p>
+		
+		<p>or</p>
+		
+		<p>
+		<a href="{% url 'login'}">Log in</a>
+		</p>
+		
+	{% endif %}
+
+</body>
+
+
+</html>
