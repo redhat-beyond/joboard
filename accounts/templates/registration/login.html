@@ -1,0 +1,48 @@
+{% load static %}
+
+<html>
+
+<head>
+
+<link rel="stylesheet" href="{% static 'style.css' %}">
+
+</head>
+
+
+<body>
+	{% if user.is_authenticated %}
+		<p>You are logged in as {{ user.get_username }}.</p>
+
+		<p>
+		<a href="{% url 'accounts:account' %}"> My Account </a>
+		</p>
+		
+		<p>
+		<a href="{% url 'home_page' %}"> Back to JoBoard </a>
+		</p>
+		
+		<p>
+		<a href="{% url 'logout' %}"> Log Out </a>
+		</p>
+
+	{% else %}
+
+	<h1>Log in</h1>
+
+	<div style = "position:relative; left:700px; top:250px;">
+		
+		<p>
+		<form action="{% url 'login' %}" method="post">
+			{% csrf_token %}
+			{{form.as_p}}
+			<input type="submit" value="Login"/>
+			<input type="hidden" name="next" value="{{ next }}" />
+		</form>
+		</p>
+		
+	</div>
+	{% endif %}
+</body>
+
+
+</html>

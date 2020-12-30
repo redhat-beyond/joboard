@@ -7,10 +7,10 @@ jobs:
     container: fedora:32
     steps:
     - name: Install Pipenv and Git
-    run: dnf install -y pipenv git
+      run: dnf install -y pipenv git
     - name: Checkout code
-    uses: actions/checkout@v2
+      uses: actions/checkout@v2
     - name: Setup environment
-    run: pipenv sync --dev
+      run: pipenv sync --dev
     - name: Run PyTest
-    run: pipenv run pytest -v
+      run: pipenv run pytest -v
