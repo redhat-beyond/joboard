@@ -5,55 +5,78 @@ from.models import Company, JobPost
 
 @pytest.mark.parametrize('n,expected', [
     (("non_relevant", "non_relevant", "non_relevant", "non_relevant"), "no relevant jobs for you"),
-    (("SW", None, None, None), "<QuerySet [<JobPost: intel sw for students>]>"),
-    (("SW", "tel aviv", "STUDENT", "intel"), "<QuerySet [<JobPost: intel sw for students>]>"),
-    (("SW", "tel aviv", None, None), "<QuerySet [<JobPost: intel sw for students>]>"),
-    ((None, "tel aviv", None, None), "<QuerySet [<JobPost: intel sw for students>, <JobPost: intel QA>]>"),
-    (("QA", "tel aviv", None, "intel"), "<QuerySet [<JobPost: intel QA>]>"),
-    ((None, None, None, "intel"), "<QuerySet [<JobPost: intel sw for students>, <JobPost: intel QA>]>"),
-    (("QA", None, None, None), "<QuerySet [<JobPost: intel QA>, <JobPost: Red Hat QA>]>"),
-    ((None, None, "STUDENT", None), "<QuerySet [<JobPost: intel sw for students>, <JobPost: Red Hat QA>]>"),
-    (("QA", "raanana", None, None), "<QuerySet [<JobPost: Red Hat QA>]>"),
-    ((None, "raanana", None, None), "<QuerySet [<JobPost: Red Hat QA>]>"),
-    ((None, None, "PART", None), "<QuerySet [<JobPost: intel QA>]>"),
+    (("SW", None, None, None), ['intel sw for students']),
+    (("SW", "tel aviv", "STUDENT", "intel"), ['intel sw for students']),
+    (("SW", "tel aviv", None, None), ['intel sw for students']),
+    ((None, "tel aviv", None, None), ['intel sw for students', 'intel QA']),
+    (("QA", "tel aviv", None, "intel"), ['intel QA']),
+    ((None, None, None, "intel"), ['intel sw for students', 'intel QA']),
+    (("QA", None, None, None), ['intel QA', 'Red Hat QA']),
+    ((None, None, "STUDENT", None), ['intel sw for students', 'Red Hat QA']),
+    (("QA", "raanana", None, None),  ['Red Hat QA']),
+    ((None, "raanana", None, None), ['Red Hat QA']),
+    ((None, None, "PART", None), ['intel QA']),
     ((None, "raanana", "PART", None), "no relevant jobs for you"),
     ((None, "raanana", None, "intel"), "no relevant jobs for you"),
     (("DevOps", None, None, None), "no relevant jobs for you"),
     ((None, None, "FULL", None), "no relevant jobs for you"),
     ])
 @pytest.mark.django_db
-def testGetSearchResults(n, expected):
-    unfiltered_search = (None, None, None, None)
-
-    # Free search when the courent DB is empty
-    checkIfDBContainsObjects(unfiltered_search)
+def testGetSearchResults1(n, expected):
 
     # initialize the DB with data
     insertDataToDB()
 
-    # Free search when the DB is not empty
-    assert str(JobPost.GetSearchResults(*unfiltered_search)) == str(JobPost.objects.all())
-
     # Check few cases
     # Check assert (realFunctionResult, expected)
-    assert str(JobPost.GetSearchResults(*n)) == expected
+    assert JobPost.GetSearchResults(*n) == expected
 
     # Remove all the objects from DB
     deleteAllobjects()
 
+
+@pytest.mark.django_db
+def testGetSearchResults2():
+    # Free search when the courent DB is empty
+    unfiltered_search = (None, None, None, None)
+    checkIfDBContainsObjects(unfiltered_search)
+
+
+@pytest.mark.django_db
+def testGetSearchResults3():
+    # initialize the DB with data
+    insertDataToDB()
+
+    # Free search when the DB is not empty
+    unfiltered_search = (None, None, None, None)
+    assert JobPost.GetSearchResults(*unfiltered_search) == \
+           list(JobPost.objects.all().values_list('job_name', flat=True).all())
+
+
+@pytest.mark.django_db
+def testGetSearchResults4():
+    # Remove all the objects from DB
+    deleteAllobjects()
+
     # Check that all the new objects are removed
+    unfiltered_search = (None, None, None, None)
     checkIfDBContainsObjects(unfiltered_search)
 
 
 def checkIfDBContainsObjects(unfiltered_search):
-    assert str(JobPost.GetSearchResults(*unfiltered_search)) == "no relevant jobs for you"
+    assert JobPost.GetSearchResults(*unfiltered_search) == "no relevant jobs for you"
 
 
 def deleteAllobjects():
-    JobPost.objects.all().delete()
-    JobType.objects.all().delete()
-    JobCity.objects.all().delete()
-    Company.objects.all().delete()
+    JobPost.objects.filter(job_name="intel sw for students").delete()
+    JobType.objects.filter(job_type_name="SW").delete()
+    JobCity.objects.filter(job_city_name="tel aviv").delete()
+    Company.objects.filter(company_name="intel").delete()
+    JobType.objects.filter(job_type_name="QA").delete()
+    JobPost.objects.filter(job_name="intel QA").delete()
+    Company.objects.filter(company_name="Red Hat").delete()
+    JobCity.objects.filter(job_city_name="raanana").delete()
+    JobPost.objects.filter(job_name="Red Hat QA").delete()
 
 
 def insertDataToDB():

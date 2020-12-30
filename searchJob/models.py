@@ -73,7 +73,7 @@ class JobPost(models.Model):
         filter_query = cls.objects.filter(query).order_by('creation_date')
         if len(filter_query) < 1:
             return "no relevant jobs for you"
-        return filter_query
+        return list(filter_query.values_list('job_name', flat=True).all())
 
 
 class UserApplication(models.Model):
