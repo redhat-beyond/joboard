@@ -17,7 +17,7 @@ class CompanyType(models.TextChoices):
 class JobScope(models.TextChoices):
     FULL = 'FULL', 'FULL'
     PART = 'PART', 'PART'
-    INTER = 'INTER', 'INTER'
+    INTERN = 'INTERN', 'INTERN'
     STUDENT = 'STUDENT', 'STUDENT'
     UNSPECIFIED = 'UNSPECIFIED', 'UNSPECIFIED'
 
@@ -86,7 +86,7 @@ class UserApplication(models.Model):
     def __str__(self):
         return str(self.job_post_id)
 
-# filter DB objects (User application) based on user
+    # filter DB objects (User application) based on user
     @classmethod
     def GetUserApplications(cls, UserName=None, ApplicationStatus=None):
         query = Q()
