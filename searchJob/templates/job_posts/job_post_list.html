@@ -40,12 +40,16 @@
   <h1> Available jobs  </h1>
 
 <div class="showSearch">
-{% for item in job_posts %}
-    <tr> 
-         <td>{{ item.job_name }}</td>
-         
-    </tr>
-       {% endfor %}
+	{% if job_posts == "no relevant jobs for you" %}
+        <p>no relevant jobs for you<p>
+	{% else %}
+
+        {% for item in job_posts %}
+            <tr>
+                 <td>{{ item }}</td><br>
+            </tr>
+    {% endfor %}
+	{% endif %}
 </div>
 </body>
 
