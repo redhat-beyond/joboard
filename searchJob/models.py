@@ -17,7 +17,7 @@ class CompanyType(models.TextChoices):
 class JobScope(models.TextChoices):
     FULL = 'FULL', 'FULL'
     PART = 'PART', 'PART'
-    INTER = 'INTER', 'INTER'
+    INTERN = 'INTERN', 'INTERN'
     STUDENT = 'STUDENT', 'STUDENT'
     UNSPECIFIED = 'UNSPECIFIED', 'UNSPECIFIED'
 
@@ -73,7 +73,7 @@ class JobPost(models.Model):
         filter_query = cls.objects.filter(query).order_by('creation_date')
         if len(filter_query) < 1:
             return "no relevant jobs for you"
-        return list(filter_query.values_list('job_name', flat=True).all())
+        return filter_query
 
 
 class UserApplication(models.Model):
