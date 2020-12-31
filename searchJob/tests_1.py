@@ -4,7 +4,6 @@ from.models import Company, JobPost
 
 
 @pytest.mark.parametrize('n,expected', [
-    (("non_relevant", "non_relevant", "non_relevant", "non_relevant"), "no relevant jobs for you"),
     (("SW", None, None, None), ['intel sw for students']),
     (("SW", "tel aviv", "STUDENT", "intel"), ['intel sw for students']),
     (("SW", "tel aviv", None, None), ['intel sw for students']),
@@ -16,10 +15,6 @@ from.models import Company, JobPost
     (("QA", "raanana", None, None),  ['Red Hat QA']),
     ((None, "raanana", None, None), ['Red Hat QA']),
     ((None, None, "PART", None), ['intel QA']),
-    ((None, "raanana", "PART", None), "no relevant jobs for you"),
-    ((None, "raanana", None, "intel"), "no relevant jobs for you"),
-    (("DevOps", None, None, None), "no relevant jobs for you"),
-    ((None, None, "FULL", None), "no relevant jobs for you"),
     ])
 @pytest.mark.django_db
 def testGetSearchResults1(n, expected):
@@ -27,9 +22,9 @@ def testGetSearchResults1(n, expected):
     # initialize the DB with data
     insertDataToDB()
 
-    # Check few cases
+    # Check few cases - when the expectation is that there are available jobs
     # Check assert (realFunctionResult, expected)
-    assert JobPost.GetSearchResults(*n) == expected
+    assert list(JobPost.GetSearchResults(*n).values_list('job_name', flat=True).all()) == expected
 
     # Remove all the objects from DB
     deleteAllobjects()
@@ -49,7 +44,7 @@ def testGetSearchResults3():
 
     # Free search when the DB is not empty
     unfiltered_search = (None, None, None, None)
-    assert JobPost.GetSearchResults(*unfiltered_search) == \
+    assert list(JobPost.GetSearchResults(*unfiltered_search).values_list('job_name', flat=True).all()) == \
            list(JobPost.objects.all().values_list('job_name', flat=True).all())
 
 
@@ -61,6 +56,27 @@ def testGetSearchResults4():
     # Check that all the new objects are removed
     unfiltered_search = (None, None, None, None)
     checkIfDBContainsObjects(unfiltered_search)
+
+
+@pytest.mark.parametrize('n,expected', [
+    (("non_relevant", "non_relevant", "non_relevant", "non_relevant"), "no relevant jobs for you"),
+    ((None, "raanana", "PART", None), "no relevant jobs for you"),
+    ((None, "raanana", None, "intel"), "no relevant jobs for you"),
+    (("DevOps", None, None, None), "no relevant jobs for you"),
+    ((None, None, "FULL", None), "no relevant jobs for you"),
+    ])
+@pytest.mark.django_db
+def testGetSearchResults5(n, expected):
+
+    # initialize the DB with data
+    insertDataToDB()
+
+    # Check few cases -  when the expectation is that there are no available jobs
+    # Check assert (realFunctionResult, expected)
+    assert JobPost.GetSearchResults(*n) == expected
+
+    # Remove all the objects from DB
+    deleteAllobjects()
 
 
 def checkIfDBContainsObjects(unfiltered_search):
