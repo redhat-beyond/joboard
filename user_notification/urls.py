@@ -5,5 +5,5 @@ app_name = 'user_notification'
 
 urlpatterns = [
     url(r'^$', views.notification),
-    url(r'^$', views.show_details),
+    url('^showDetails/', views.show_details, name="showDetails"),
 ]

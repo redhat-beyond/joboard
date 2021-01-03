@@ -1,7 +1,6 @@
 from user_notification.models import JobAlert
 import pytest
 from datetime import datetime
-from accounts.models import UserAccount
 from django.contrib.auth import User
 
 
@@ -43,9 +42,10 @@ def test_check_if_alert_exist(n, expected):
 
 
 def deleteAllobjects():
-    JobAlert.objects.all().delete()
-    UserAccount.objects.all().delete()
-    User.objects.all().delete()
+    JobAlert.objects.new_user1.delete()
+    JobAlert.objects.new_user2.delete()
+    User.objects.filter(username="Yosi").delete()
+    User.objects.filter(username="Tami").delete()
 
 
 def insertDataToDB():
