@@ -1,7 +1,6 @@
 from user_notification.models import JobAlert
 import pytest
 from datetime import datetime
-from accounts.models import UserAccount
 from django.contrib.auth import User
 
 
