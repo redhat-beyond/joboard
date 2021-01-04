@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'joboard_home.apps.JoboardHomeConfig',
     'accounts.apps.AccountsConfig',
     'user_notification',
-    'searchJob',
+    'search_job',
 ]
 
 MIDDLEWARE = [

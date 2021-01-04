@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import datetime, timedelta
 from django.conf import settings
-from searchJob.models import JobScope
+from search_job.models import JobScope
 from django.core.validators import MinValueValidator
 
 

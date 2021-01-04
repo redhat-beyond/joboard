@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class SearchjobConfig(AppConfig):
-    name = 'searchJob'
+    name = 'search_job'

@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
                     ('UNSPECIFIED', 'UNSPECIFIED')], default='UNSPECIFIED', max_length=50, null=True)),
                 ('job_URL', models.URLField()),
                 ('company_id', models.ForeignKey(
-                    on_delete=django.db.models.deletion.CASCADE, to='searchJob.company')),
+                    on_delete=django.db.models.deletion.CASCADE, to='search_job.company')),
                 ('job_city_id', models.ForeignKey(blank=True, null=True,
                                                   on_delete=django.db.models.deletion.CASCADE,
                                                   to='user_notification.jobcity')),
@@ -72,7 +72,7 @@ class Migration(migrations.Migration):
                     ('UNSPECIFIED', 'UNSPECIFIED')], default='UNSPECIFIED', max_length=50, null=True)),
                 ('job_post_id', models.ForeignKey(blank=True, null=True,
                                                   on_delete=django.db.models.deletion.CASCADE,
-                                                  to='searchJob.jobpost')),
+                                                  to='search_job.jobpost')),
                 ('user_account_id', models.ForeignKey(blank=True, default=1, null=True,
                                                       on_delete=django.db.models.deletion.CASCADE,
                                                       to=settings.AUTH_USER_MODEL)),
