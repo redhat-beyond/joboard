@@ -2,41 +2,32 @@
 
 <html>
 
-<head>
+	<head>
+		<link rel="stylesheet" href="{% static 'style.css' %}">
+		<link rel="stylesheet" href="{% static 'accounts_style.css' %}">
+		<link rel = "icon" href ="{% static 'images/sitelogovector.svg' %}" type = "image/x-icon" >
+		<title>JoBoard - {{ user.get_username }}'s account</title>
+	</head>
 
-<link rel="stylesheet" href="{% static 'style.css' %}">
 
-</head>
+	<body>
+		{% if user.is_authenticated %}
+			<div class="header">
+				<h2>Welcome, {{ user.get_username }}!</h2>
+			</div>
+			<div class="header">
+				<button type="button" class="link-btn" onclick="location.href='{% url 'home_page' %}'">Back to JoBoard</button>
+				<button type="button" class="link-btn" onclick="location.href='{% url 'logout' %}'">Log Out</button>
+			</div>
+			
+			<div class="signup">
 
+			</div>
+			
 
-<body>
-	{% if user.is_authenticated %}
-		<h1>Welcome, {{ user.get_username }}</h1>
-		
-		<p>
-		<a href="{% url 'home_page' %}"> Back to JoBoard </a>
-		</p>
-		
-		<p>
-		<a href="{% url 'logout' %}"> Log Out </a>
-		
-	{% else %}
-		
-		<p>New to JoBoard?</p>
-		
-		<p>
-		<a href="{% url 'signup'}">Sign up</a> 
-		</p>
-		
-		<p>or</p>
-		
-		<p>
-		<a href="{% url 'login'}">Log in</a>
-		</p>
-		
-	{% endif %}
+		{% endif %}
 
-</body>
+	</body>
 
 
 </html>
