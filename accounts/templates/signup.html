@@ -18,7 +18,7 @@
 		<div class="signup">
 			<form method="post">
 				{% csrf_token %}
-				{% for field in registration_form %}
+				{% for field in form %}
 					<p>
 						<b>{{ field.label_tag }}</b>
 					</p>
