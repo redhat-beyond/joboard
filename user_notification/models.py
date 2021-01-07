@@ -55,6 +55,12 @@ class JobAlert(models.Model):
 class JobType(models.Model):
     job_type_name = models.CharField(max_length=20)
 
+    def __str__(self):
+        return str(self.job_type_name)
+
 
 class JobCity(models.Model):
     job_city_name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return str(self.job_city_name)
