@@ -82,9 +82,6 @@ h2{
     border: none;
 	width:100%;
 	margin-top:50px;
-    #position: absolute;
-    #top: 35%;
-    #left:20%;
     text-align: center;}
 	
 form{
@@ -99,13 +96,13 @@ form{
     transform: translate(-50%, -50%);}
 
 .btn{
-border: none;
-background: #3cbbb1;
-margin-top: 15px;
-border-right: 2px;
-color: white;
-font-size:17px;
-border-right-style: groove;}
+	border: none;
+	background: #3cbbb1;
+	margin-top: 15px;
+	border-right: 2px;
+	color: white;
+	font-size:17px;
+	border-right-style: groove;}
 
 .btnn:hover{
     background: grey;}
@@ -129,17 +126,73 @@ border-right-style: groove;}
 margin-top:0.7%;}
 
 .menu{
-    display:flex;
-}
+    display:flex;}
+
+.no_job{
+	margin: auto;
+	font-size: 18px;
+	text-align: center;
+	margin-top:100px;
+	background: rgba(255,255,255, 0.4);
+	width:50%;
+	padding:5px;}
 
 .showSearch{
-    height: 550;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 60%;
+	width:80%;
+	background: rgba(255,255,255, 0.4);
+	margin:30px auto auto auto;}
+
+.the_jobs{
+	display:inline-block;
+	overflow-y: scroll;
+	background: rgba(255,255,255, 0.7);
+	width:30%;
+	height: 100%;
+	display:inline-block;}
+	
+.user-action-btn{
+	color:#3cbbb1;
+	width:100%;
+	height: 60px;
+	border-width:1.5px;}
+
+table{
+	width:100%;
+	font-size:100%;	
 }
 
+.user-action-btn:hover{
+    background: #d9d9d9;
+    cursor: pointer;
+	border-color:#3cbbb1;}
+
+#job_details{
+	 display: none;
+	 float: right;
+	 background: rgba(255,255,255, 0.9);
+	 width:70%;
+	 height:100%;
+	 padding:25px;
+	 position:relative;
+	 overflow-y: scroll;}
+
+#info_name{
+	font-size:22px;
+    background-color:#3cbbb1;
+    text-align:center;}
 
 
+#info_description{
+	margin-top:20px;
+	margin-bottom:50px;
+	background: #ccedea;
+	border-style: double;
+	border-color:#bfbfbf;
+	height:33%;}
+
+#apply{
+	margin:auto;
+	color:white;}
 
   
