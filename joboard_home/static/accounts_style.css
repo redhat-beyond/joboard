@@ -1,0 +1,91 @@
+body {
+	font-family: Verdana, sans-serif;
+	position: absolute;
+	width: 100%;
+}
+
+h1, h2{
+    font-family: Verdana, sans-serif;
+    border-radius: 30px;
+	box-shadow: 0px 0px 3px dimgrey;
+	text-shadow: 0px 0px 3px grey;
+	}
+
+.signup {
+	display: flex;
+	align-self: center;
+	justify-content: center;
+	size: 150%;
+	background: rgba(255,255,255, 0.4);
+	position: relative;
+	margin: 10px 0px 10px 0px;
+	line-height: 20px;
+	text-shadow: 0px 0px 3px white;
+	box-shadow: 0px 0px 3px dimgrey;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+	width: 400px;
+	height: 30px;
+}
+					
+.buttonHolder { 
+	text-align: center;
+	size: 200%;
+}
+
+.submit-btn {
+    margin-top:25px;
+    height: 50px;
+    width: 100px;
+    background: #3cbbb1;
+    border: 1px;
+    font-size: 20px;
+    color: whitesmoke;
+	box-shadow: 0px 0px 3px dimgrey;
+	text-shadow: 0px 0px 3px grey;
+	font-weight: bold;
+    border-radius: 25px;
+}
+
+.link-btn {
+	margin: 0px 10px 20px 10px;
+	display: inline;
+    height: 25px;
+    width: 100px;
+    background: #3cbbb1;
+    border: none;
+    font-size: 10px;
+    color: whitesmoke;
+    border-radius: 25px;
+	box-shadow: 0px 0px 3px dimgrey;
+	text-shadow: 0px 0px 3px grey;
+	font-weight: bold;
+
+}
+
+.footer {
+	display: block;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	top: 5;
+	padding: 1rem;
+	text-align: center;
+	background: none;
+}
+
+.bottomcorner{
+	position:absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.small-link:link, .small-link:visited {
+	font-size: 10px;
+    color: whitesmoke;
+    border-radius: 25px;
+	text-shadow: 0px 0px 3px grey;
+	font-weight: bold;	
+}

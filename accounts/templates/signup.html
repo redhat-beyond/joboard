@@ -2,42 +2,43 @@
 
 <html>
 
-<head>
+	<head>
+		<link rel="stylesheet" href="{% static 'style.css' %}">
+		<link rel="stylesheet" href="{% static 'accounts_style.css' %}">
+		<link rel = "icon" href ="{% static 'images/sitelogovector.svg' %}" type = "image/x-icon" >
+		<title>JoBoard - Create an Account</title>
+	</head>
 
-<link rel="stylesheet" href="{% static 'style.css' %}">
+	<body>
 
-</head>
-
-
-<body>
-	{% if user.is_authenticated %}
-		<p>You are logged in as {{ user.get_username }}.</p>
-
-		<p>
-		<a href="{% url 'accounts:account' %}"> My Account </a>
-		</p>
-		
-		<p>
-		<a href="{% url 'home_page' %}"> Back to JoBoard </a>
-		</p>
-		
-		<p>
-		<a href="{% url 'logout' %}"> Log Out </a>
-		</p>
-
-	{% else %}
-		<h1>Create an account</h1>
-
-		<div style="position:relative; left:275px; top:250px;">
+		<div class="header">
+			<h2 style="margin-top:25px;">Create an account</h2>
+		</div>
+			
+		<div class="signup">
 			<form method="post">
 				{% csrf_token %}
-				{{registration_form.as_p}}
-			<input type="submit" value="Submit"/>
+				{% for field in form %}
+					<p>
+						<b>{{ field.label_tag }}</b>
+					</p>
+					<p>
+						{{ field }}
+						<br><br>
+					</p>
+				{% endfor %}
+				<div class="buttonHolder">
+					<input type="submit" class="submit-btn" value="Submit"/>
+				</div>
+					
 			</form>
+			<div class="bottomcorner">
+			<a href="{% url 'home_page' %}" class="small-link">Back to JoBoard</a>
+			</div>
 		</div>
-
-	{% endif %}
-</body>
+		
+		
+	</body>
 
 
 </html>
