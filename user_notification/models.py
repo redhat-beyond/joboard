@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from django.conf import settings
 from search_job.models import JobScope
 from django.core.validators import MinValueValidator
+from django.db.models import Q
 
 
 class JobAlert(models.Model):
@@ -39,6 +40,16 @@ class JobAlert(models.Model):
                     last_check_date, "%Y-%m-%d").date()
                 res = last_date + timedelta(days=frequency_in_days)
             return res
+
+    @classmethod
+    def check_if_alert_exist(cls, user_name):
+        query = Q()
+        query &= Q(user_account_id__username=user_name)
+        alert_record = cls.objects.filter(query)
+        if len(alert_record) > 0:
+            return alert_record
+        else:
+            return "Job Alert Not Exist"
 
 
 class JobType(models.Model):
