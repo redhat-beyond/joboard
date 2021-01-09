@@ -41,7 +41,7 @@
   <h4 style="text-align:center;"><strong>Alert details</strong></h4>
   <div class="alerts">
       <div class="alert">
-        <form class='alertForm' method='post'>
+        <form method='post'>
           {% csrf_token %}
           {{form}}
           <input type="submit" value="create job alert">

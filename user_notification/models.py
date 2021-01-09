@@ -42,10 +42,9 @@ class JobAlert(models.Model):
         query = Q()
         query &= Q(user_account_id__username=user_name)
         alert_record = cls.objects.filter(query)
-        if len(alert_record) > 0:
-            return alert_record
-        else:
+        if len(alert_record) < 1:
             return "Job Alert Not Exist"
+        return alert_record
 
     @classmethod
     def exclude_old_jobs(cls, jobs, last_check_date):
