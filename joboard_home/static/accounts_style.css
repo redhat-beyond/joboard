@@ -11,6 +11,28 @@ h1, h2{
 	text-shadow: 0px 0px 3px grey;
 	}
 
+h3{
+    font-family: Verdana, sans-serif;
+    font-size: 30px;
+    margin-top: 5px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    background-color: #3cbbb1;
+	box-shadow: 0px 0px 3px dimgrey;
+	text-shadow: 0px 0px 3px grey;
+	width:150%;
+	text-align: center;
+	}
+
+h4{
+    font-family: Verdana, sans-serif;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+	text-shadow: 0px 0px 3px grey;
+	}
+
 .signup {
 	display: flex;
 	align-self: center;
@@ -24,8 +46,37 @@ h1, h2{
 	box-shadow: 0px 0px 3px dimgrey;
 }
 
-input[type="text"], input[type="email"], input[type="password"] {
-	width: 400px;
+.box_bg {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative
+	align-self: center;
+	align-content: center;
+	justify-content: center;
+	size: 200%;
+	background: rgba(255,255,255, 0.4);
+	line-height: 20px;
+	text-shadow: 0px 0px 3px white;
+	box-shadow: 0px 0px 3px dimgrey;
+}
+
+input[type="text"], input[type="email"], input[type="password"], select[id='id_gender'] {
+	width: 250px;
+	height: 30px;
+}
+
+select[id='id_birth_date_day'], select[id='id_birth_date_year'] {
+	width: 50px;
+	height: 30px;
+}
+
+select[id='id_birth_date_year'] {
+	width: 60px;
+	height: 30px;
+}
+
+select[id='id_birth_date_month'] {
+	width: 140px;
 	height: 30px;
 }
 					
@@ -64,18 +115,6 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 }
 
-.footer {
-	display: block;
-	position: absolute;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	top: 5;
-	padding: 1rem;
-	text-align: center;
-	background: none;
-}
-
 .bottomcorner{
 	position:absolute;
 	bottom: 0;
@@ -89,3 +128,14 @@ input[type="text"], input[type="email"], input[type="password"] {
 	text-shadow: 0px 0px 3px grey;
 	font-weight: bold;	
 }
+
+.success {
+	position: relative;
+    left: 0;
+    top: 0;
+    background-color:#3cbbb1;
+    color:white ;
+    height: 40px;
+    width: 100%;
+    opacity:75%;
+	margin-bottom:10px;}

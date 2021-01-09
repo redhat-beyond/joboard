@@ -1,0 +1,62 @@
+{% load static %}
+
+<html>
+
+	<head>
+		<link rel="stylesheet" href="{% static 'style.css' %}">
+		<link rel="stylesheet" href="{% static 'accounts_style.css' %}">
+		<link rel = "icon" href ="{% static 'images/sitelogovector.svg' %}" type = "image/x-icon" >
+		<title>JoBoard</title>
+	</head>
+
+	<body>
+
+			<div>
+			{% if messages %}
+				{% for message in messages %}
+				<div class="success">
+				<p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+				{% endfor %}
+			{% endif %}
+				</div>
+
+			<div class="header">
+			<h2 style="margin-top:25px;">Hello, {{ user.get_username }}</h2>
+			</div>
+
+			<div class="signup">
+
+			<form method="post">
+				{% csrf_token %}
+				{% for field in user_form %}
+					<p>
+						<b>{{ field.label_tag }}</b>
+					</p>
+					<p>
+						{{ field }}
+					</p>
+				{% endfor %}
+				{% for field in account_form %}
+					<p>
+						<b>{{ field.label_tag }}</b>
+					</p>
+					<p>
+						{{ field }}
+					</p>
+				{% endfor %}
+
+				<div class="buttonHolder">
+					<input type="submit" class="submit-btn" value="Submit"/>
+				</div>
+			</form>
+			<div class="bottomcorner">
+			<a href="{% url 'home_page' %}" class="small-link">Back to JoBoard</a>
+			</div>
+			</div>
+			</div>
+
+
+	</body>
+
+
+</html>
