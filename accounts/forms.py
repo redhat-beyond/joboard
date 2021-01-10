@@ -15,8 +15,17 @@ class SignUpForm(UserCreationForm):
         }
 
 
+class UserForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', ]
+        exclude = ['username', 'password', ]
+
+
 class AccountForm(forms.ModelForm):
+    birth_date = forms.DateField(widget=forms.SelectDateWidget)
 
     class Meta:
         model = UserAccount
-        fields = ['gender', 'birth_date', 'contact_number']
+        fields = ['gender', 'birth_date', 'contact_number', ]
