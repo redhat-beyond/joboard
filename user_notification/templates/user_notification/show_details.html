@@ -35,21 +35,28 @@
 </head>
 
 <body>
-
 	<img class="logo" src="{% static 'images/sitelogovector.svg' %}">
-	<h3><strong>   notification settings </strong></h3>
-  <h4 style="text-align:center;"><strong>Alert details</strong></h4>
+	<h3><strong>Alert Settings</strong></h3>
+  <h4 style="text-align:center; font-size: 24px; color:0B5BB6"><strong>Job Alert Details for {{user.get_username}}</strong></h4>
   <div class="alerts">
-      <div class="alert">
-        <form method='post'>
+      <div class="alert" style="font-size:20px">
+        <form  method='post'>
           {% csrf_token %}
-          {{form}}
-          <input type="submit" value="create job alert">
+          {% for record in user_form  %}
+            <p><span style="font-weight: bold;">User name: </span>{{record.user_account_id}}</p>
+            <p><span style="font-weight: bold;">Last check date: </span>{{record.last_check_date}}</p>
+            <p><span style="font-weight: bold;">Alert frequency: </span>{{record.frequency_in_days}}</p>
+            <p><span style="font-weight: bold;">Job type: </span>{{record.job_alert_type}}</p>
+            <p><span style="font-weight: bold;">Job scope: </span>{{record.job_alert_scope}}</p>
+            <p><span style="font-weight: bold;">Job city: </span>{{record.job_alert_city}}</p>
+            <p><span style="font-weight: bold;">Company name: </span>{{record.job_alert_company_name}}</p>            
+          {%endfor%}
         </form>
       </div>
   </div>
-    
-    
+  <div style="margin:auto; position:center; clear:both; box-sizing:border-box; text-align:center">
+    <button type="button" class="btn btn-primary"><a href="{% url 'user_notification:alertForm' %}">Change my job alert settings</a></button>
+  </div>
 </body>
 
 <footer class="footer">
@@ -57,6 +64,4 @@
          <a class="text-muted">All right reserved to joBoard - job's search engine </a>
       </div>
 </footer>
-
-
 </html>
